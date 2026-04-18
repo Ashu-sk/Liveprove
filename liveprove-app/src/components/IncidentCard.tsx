@@ -15,13 +15,13 @@ export type IncidentCardModel = {
 function severityColor(severity: IncidentSeverity) {
   switch (severity) {
     case 'critical':
-      return '#FF3B30';
+      return '#ff3355';
     case 'high':
-      return '#FF6A00';
+      return '#ffaa00';
     case 'medium':
-      return '#FFD60A';
+      return '#0066ff';
     case 'low':
-      return '#34C759';
+      return '#00ff88';
   }
 }
 
@@ -67,9 +67,9 @@ const styles = StyleSheet.create({
   card: {
     flexDirection: 'row',
     width: '100%',
-    backgroundColor: '#1a1a1a',
+    backgroundColor: '#0a0f1e',
     borderWidth: 1,
-    borderColor: '#2a2a2a',
+    borderColor: '#1a2a3a',
     borderRadius: 16,
     overflow: 'hidden',
   },
@@ -83,24 +83,24 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   summary: {
-    color: '#FFF',
+    color: '#ffffff',
     fontSize: 14,
     lineHeight: 19,
     fontWeight: '700',
   },
   location: {
-    color: 'rgba(255,255,255,0.65)',
+    color: '#8899aa',
     fontSize: 12,
     fontWeight: '600',
   },
   time: {
-    color: 'rgba(255,255,255,0.55)',
+    color: '#556677',
     fontSize: 11,
     fontWeight: '600',
   },
   verifiedByAi: {
     marginTop: 4,
-    color: '#34C759',
+    color: '#00ff88',
     fontSize: 11,
     fontWeight: '700',
   },

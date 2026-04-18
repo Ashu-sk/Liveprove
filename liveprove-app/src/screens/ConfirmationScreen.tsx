@@ -54,7 +54,7 @@ export default function ConfirmationScreen() {
           <TextInput
             style={styles.input}
             placeholder="Brief description..."
-            placeholderTextColor="#555"
+            placeholderTextColor="#556677"
             value={title}
             onChangeText={setTitle}
             maxLength={100}
@@ -78,7 +78,7 @@ export default function ConfirmationScreen() {
               <Text style={styles.anonTitle}>Stay anonymous</Text>
               <Text style={styles.anonSub}>Your identity stays hidden</Text>
             </View>
-            <Switch value={isAnonymous} onValueChange={setIsAnonymous} trackColor={{ true: '#ff3333' }} thumbColor="white" />
+            <Switch value={isAnonymous} onValueChange={setIsAnonymous} trackColor={{ true: '#0066ff', false: '#1a2a3a' }} thumbColor="white" />
           </View>
 
           <TouchableOpacity
@@ -102,26 +102,26 @@ export default function ConfirmationScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#0a0a0a' },
+  container: { flex: 1, backgroundColor: '#000000' },
   scroll: { padding: 20, paddingBottom: 40 },
   header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24 },
-  back: { color: '#ff3333', fontSize: 15 },
-  title: { color: 'white', fontSize: 18, fontWeight: '600' },
-  videoPlaceholder: { backgroundColor: '#1a1a1a', borderRadius: 16, height: 180, alignItems: 'center', justifyContent: 'center', marginBottom: 24, borderWidth: 1, borderColor: '#2a2a2a' },
+  back: { color: '#0066ff', fontSize: 15 },
+  title: { color: '#ffffff', fontSize: 18, fontWeight: '600' },
+  videoPlaceholder: { backgroundColor: '#0a0f1e', borderRadius: 16, height: 180, alignItems: 'center', justifyContent: 'center', marginBottom: 24, borderWidth: 1, borderColor: '#0066ff33' },
   videoIcon: { fontSize: 48, marginBottom: 8 },
-  videoText: { color: '#888', fontSize: 14 },
-  label: { color: '#888', fontSize: 13, marginBottom: 10, marginTop: 8 },
-  input: { backgroundColor: '#1a1a1a', borderRadius: 12, padding: 14, color: 'white', fontSize: 15, borderWidth: 1, borderColor: '#2a2a2a', marginBottom: 20 },
+  videoText: { color: '#8899aa', fontSize: 14 },
+  label: { color: '#8899aa', fontSize: 13, marginBottom: 10, marginTop: 8 },
+  input: { backgroundColor: '#0a0f1e', borderRadius: 12, padding: 14, color: '#ffffff', fontSize: 15, borderWidth: 1, borderColor: '#1a2a3a', marginBottom: 20 },
   tagGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginBottom: 24 },
-  tagPill: { paddingHorizontal: 16, paddingVertical: 10, borderRadius: 24, borderWidth: 1, borderColor: '#333', backgroundColor: '#1a1a1a' },
-  tagPillActive: { backgroundColor: '#ff3333', borderColor: '#ff3333' },
-  tagText: { color: '#888', fontSize: 14 },
-  tagTextActive: { color: 'white', fontWeight: '600' },
-  anonRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#1a1a1a', padding: 16, borderRadius: 12, marginBottom: 32, borderWidth: 1, borderColor: '#2a2a2a' },
-  anonTitle: { color: 'white', fontSize: 15, fontWeight: '500' },
-  anonSub: { color: '#555', fontSize: 12, marginTop: 2 },
-  submitBtn: { backgroundColor: '#ff3333', padding: 18, borderRadius: 16, alignItems: 'center' },
-  submitBtnDisabled: { backgroundColor: '#333' },
+  tagPill: { paddingHorizontal: 16, paddingVertical: 10, borderRadius: 24, borderWidth: 1, borderColor: '#1a2a3a', backgroundColor: '#0a0f1e' },
+  tagPillActive: { backgroundColor: '#0066ff', borderColor: '#0066ff' },
+  tagText: { color: '#8899aa', fontSize: 14 },
+  tagTextActive: { color: '#ffffff', fontWeight: '600' },
+  anonRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#0a0f1e', padding: 16, borderRadius: 12, marginBottom: 32, borderWidth: 1, borderColor: '#0066ff22' },
+  anonTitle: { color: '#ffffff', fontSize: 15, fontWeight: '500' },
+  anonSub: { color: '#556677', fontSize: 12, marginTop: 2 },
+  submitBtn: { backgroundColor: '#0066ff', padding: 18, borderRadius: 16, alignItems: 'center', borderWidth: 1, borderColor: '#0044cc', shadowColor: '#0066ff', shadowOpacity: 0.35, shadowRadius: 16, elevation: 8 },
+  submitBtnDisabled: { backgroundColor: '#1a2a3a', borderColor: '#1a2a3a' },
   submitText: { color: 'white', fontSize: 16, fontWeight: '700' },
 });
 
