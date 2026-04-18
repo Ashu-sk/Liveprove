@@ -3,7 +3,8 @@ import OpenAI from 'openai';
 function getClient() {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) throw new Error('Missing OPENAI_API_KEY');
-  return new OpenAI({ apiKey });
+  const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+  return openai;
 }
 
 const SYSTEM_PROMPT =
@@ -31,6 +32,7 @@ export async function analyzeIncident(
   tag: string,
   location_name: string,
 ): Promise<AnalyzeIncidentResult> {
+  console.log('[analyzeIncident] inputs', { title, tag, location_name });
   const prompt =
     `Incident reported: Title: ${title}. Category: ${tag}. Location: ${location_name}. ` +
     'Analyze this and return JSON with exactly these fields:\n' +
@@ -38,17 +40,23 @@ export async function analyzeIncident(
     'authority_needed (Police/Fire Department/Ambulance/Traffic Police/Municipal Corp),\n' +
     'ai_summary (one factual sentence under 15 words), safe_to_publish (true/false)';
 
-  const client = getClient();
-  const response = await client.responses.create({
-    model: 'gpt-4o',
-    input: [
-      { role: 'system', content: SYSTEM_PROMPT },
-      { role: 'user', content: prompt },
-    ],
-  });
+  try {
+    const openai = getClient();
+    console.log('[analyzeIncident] openai.chat.completions.create', { model: 'gpt-4o' });
+    const response = await openai.chat.completions.create({
+      model: 'gpt-4o',
+      messages: [
+        { role: 'system', content: SYSTEM_PROMPT },
+        { role: 'user', content: prompt },
+      ],
+    });
 
-  const text = response.output_text ?? '';
-  const jsonText = extractJsonObject(text);
-  return JSON.parse(jsonText) as AnalyzeIncidentResult;
+    const text = response.choices?.[0]?.message?.content ?? '';
+    const jsonText = extractJsonObject(text);
+    return JSON.parse(jsonText) as AnalyzeIncidentResult;
+  } catch (err) {
+    console.error('[analyzeIncident] error', err);
+    throw err;
+  }
 }
 
